@@ -57,7 +57,7 @@ import java.util.Queue;
  *     }
  * }
  */
-class Solution {
+class Solution102 {
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
@@ -104,8 +104,8 @@ class Solution {
         root.right = new TreeNode(3);
         root.left.left = new TreeNode(4);
         root.right.right = new TreeNode(5);
-        List<List<Integer>> lists = new Solution().levelOrder(root);
-        System.out.println("lists = " + lists);
+        // List<List<Integer>> lists = new Solution().levelOrder(root);
+        // System.out.println("lists = " + lists);
     }
 
 }

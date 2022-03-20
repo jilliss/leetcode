@@ -63,11 +63,39 @@ class Solution752 {
         Set<String> visited = new HashSet<>(deads);
 
         Queue<String> q = new LinkedList<>();
-        q.offer("0000");
+        Set<String> q1 = new HashSet<>();
+        Set<String> q2 = new HashSet<>();
+        // q.offer("0000");
+        q1.add("0000");
+        q2.add(target);
         int step = 0;
-        while (!q.isEmpty()) {
-            int size = q.size();
-            for (int i = 0; i < size; i++) {
+        while (!q1.isEmpty() && !q2.isEmpty()) {
+            // int size = q.size();
+            Set<String> temp = new HashSet<>();
+            for (String cur : q1) {
+                if (deads.contains(cur)) {
+                    continue;
+                }
+                if (q2.contains(cur)) {
+                    return step;
+                }
+                visited.add(cur);
+                // 0000 每一位的两种可能
+                for (int j = 0; j < 4; j++) {
+                    String up = plusOne(cur, j);
+                    if (!visited.contains(up)) {
+                        temp.add(up);
+                    }
+                    String down = minusOne(cur, j);
+                    if (!visited.contains(down)) {
+                        temp.add(down);
+                    }
+                }
+            }
+            step++;
+            q1 = q2;
+            q2 = temp;
+/*            for (int i = 0; i < size; i++) {
                 String cur = q.poll();
                 if (deads.contains(cur)) {
                     continue;
@@ -90,8 +118,8 @@ class Solution752 {
 
                 }
 
-            }
-            step++;
+            }*/
+            // step++;
         }
         return -1;
     }
@@ -121,8 +149,9 @@ class Solution752 {
     public static void main(String[] args) {
         String[] strings = {"0201", "0101", "0102", "1212", "2002"};
 
-        String tar  = "0202";
+        String tar = "0202";
         int i = new Solution752().openLock(strings, tar);
+        System.out.println("i = " + i);
     }
 
 }
