@@ -1,0 +1,28 @@
+### 代码
+
+* java
+
+```java
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        //申请一个额外数组空间保存数组前缀和
+        int[] presum=new int[nums.length+1];
+        //返回结果集
+        int res=0;
+        //构造前缀和
+        for(int i=1;i<presum.length;i++){
+            presum[i]=presum[i-1]+nums[i-1];
+        }
+        //类似选择排序思想 可以让数组中所有不包括自己的数与其他数都匹配一次
+        for(int x=0;x<presum.length-1;x++){
+            for(int y=x+1;y<presum.length;y++){
+                if(presum[y]-presum[x]==k){
+                    res++;
+                }
+            }
+        }
+        return res;
+    }
+}
+```
+
