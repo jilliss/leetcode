@@ -36,7 +36,7 @@
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution70 {
 
     int dp(int n, int[] memo) {
         // base case
@@ -57,8 +57,8 @@ class Solution {
         return dp(n,memo);
     }
 
-    public static void main(String[] args) {
-        int i = new Solution().climbStairs(3);
-    }
+    // public static void main(String[] args) {
+    //     int i = new Solution().climbStairs(3);
+    // }
 }
 //leetcode submit region end(Prohibit modification and deletion)
