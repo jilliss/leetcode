@@ -34,7 +34,7 @@ import java.util.List;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution54 {
     public List<Integer> spiralOrder(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;
