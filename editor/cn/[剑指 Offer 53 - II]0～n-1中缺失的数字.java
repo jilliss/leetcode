@@ -58,9 +58,9 @@ class Solution53tow {
         // new Solution().missingNumber(new int[]{
         //         0, 1
         // });
-        new Solution().extendes(new int[]{
-                2, 5, 8, 12, 19
-        }, 5);
+        // new Solution().extendes(new int[]{
+        //         2, 5, 8, 12, 19
+        // }, 5);
     }
 
     public boolean findNumberIn2DArray(int[][] matrix, int target) {
