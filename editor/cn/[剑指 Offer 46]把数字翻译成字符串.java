@@ -21,7 +21,7 @@
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution46 {
+class SolutionO46 {
     public int translateNum(int num) {
         if (num < 10) {
             return 1;
