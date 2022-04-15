@@ -33,7 +33,7 @@ import static java.lang.Math.max;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution63 {
     public int maxProfit(int[] prices) {
         int n = prices.length;
         int[][] dp = new int[2][n];
@@ -73,6 +73,65 @@ class Solution {
             dp_i_1 = Math.max(dp_i_1, -prices[i]);
         }
         return dp_i_0;
+    }
+
+    private int maxProfit_all_in_one(int max_k, int[] prices, int cooldown, int fee) {
+        int n = prices.length;
+        if (max_k > n / 2) {
+            return maxProfit_k_inf(prices, cooldown, fee);
+        }
+        int[][][] dp = new int[2][n][max_k + 1];
+        for (int i = 0; i < n; i++) {
+            for (int k = 0; k < max_k; k++) {
+                if (i - 1 == -1) {
+                    dp[0][i][k] = 0;
+                    dp[1][i][k] = -prices[i] - fee;
+                    continue;
+                }
+
+                if (i - cooldown - 1 == -1) {
+                    dp[0][i][k] = Math.max(dp[0][i - 1][k], dp[1][i - 1][k] + prices[i]);
+                    dp[1][i][k] = Math.max(dp[0][i - 1][k], -prices[i] - fee);
+                    continue;
+                }
+                dp[0][i][k] = Math.max(dp[0][i - 1][k], dp[1][i - 1][k] + prices[i]);
+                dp[1][i][k] = Math.max(dp[0][i - 1][k], dp[0][i - cooldown - 1][k] - prices[i] - fee);
+            }
+        }
+        return dp[0][n - 1][max_k];
+    }
+
+    /**
+     * k 无限制，包含手续费和冷冻期
+     *
+     * @param cooldown 冷冻期
+     * @param fee      手续费
+     * @param prices   股票价格
+     */
+    int maxProfit_k_inf(int[] prices, int cooldown, int fee) {
+        int n = prices.length;
+        int[][] dp = new int[n][2];
+        for (int i = 0; i < n; i++) {
+            if (i - 1 == -1) {
+                // base case 1
+                dp[i][0] = 0;
+                dp[i][1] = -prices[i] - fee;
+                continue;
+            }
+
+            // 包含 cooldown 的 base case
+            if (i - cooldown - 1 < 0) {
+                // base case 2
+                dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+                // 别忘了减 fee
+                dp[i][1] = Math.max(dp[i - 1][1], -prices[i] - fee);
+                continue;
+            }
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+            // 同时考虑 cooldown 和 fee
+            dp[i][1] = Math.max(dp[i - 1][1], dp[i - cooldown - 1][0] - prices[i] - fee);
+        }
+        return dp[n - 1][0];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
