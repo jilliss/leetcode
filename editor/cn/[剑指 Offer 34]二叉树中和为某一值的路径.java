@@ -63,7 +63,7 @@ import java.util.*;
  *     }
  * }
  */
-class Solution {
+class Solution34 {
     public List<List<Integer>> pathSum(TreeNode root, int target) {
         List<List<Integer>> res = new ArrayList<>();
         dfs(root,target,res,new LinkedList<>());
