@@ -79,10 +79,12 @@ class Solution {
             if (i == 0){
                 path.add(node.val);
                 res.add(new ArrayList<>(path));
+                // 这里删除是因为 退出此次递归 左节点或右节点可能还有解
                 path.removeLast();
             }
             return;
         }
+        // 选择 取消选择
         path.add(node.val);
         dfs(node.left, i, res, path);
         path.removeLast();
