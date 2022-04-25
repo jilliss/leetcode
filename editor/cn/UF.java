@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class UF {
     /**
      * 连通分量
@@ -16,7 +18,8 @@ public class UF {
     private int[] size;
 
     public UF(int n) {
-
+        HashSet<String> set = new HashSet();
+        set.add("");
         count = n;
         parent = new int[n];
         size = new int[n];
