@@ -28,7 +28,7 @@ import java.util.Arrays;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution40 {
     public int[] getLeastNumbers(int[] arr, int k) {
         int r = arr.length - 1;
         quickSort(arr, 0, r);
@@ -68,12 +68,12 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{
-                90, 12, 35, 1, 23, 59
-
-        };
-        new Solution().quickSort(arr, 0, arr.length - 1);
-        System.out.println("arr = " + Arrays.toString(arr));
+        // int[] arr = new int[]{
+        //         90, 12, 35, 1, 23, 59
+        //
+        // };
+        // new Solution().quickSort(arr, 0, arr.length - 1);
+        // System.out.println("arr = " + Arrays.toString(arr));
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
