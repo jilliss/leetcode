@@ -58,7 +58,7 @@ class Solution38 {
     }
 
     public static void main(String[] args) {
-        String[] aabcs = new Solution38().permutation("aabc");
+        // String[] aabcs = new Solution38().permutation("aabc");
         //    ["caab","cbaa","aacb","abca","baca","caba","aabc","acba","abac","acab","baac","bcaa"]
         //    ["abac","abca","acab","acba","aabc","aacb","baca","baac","bcaa","caba","caab","cbaa"]
     }
