@@ -29,7 +29,7 @@ import java.util.*;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution59{
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || nums.length == 0){
             return new int[]{};
@@ -92,7 +92,7 @@ class Solution {
         return ans;
     }
     public static void main(String[] args) {
-        new Solution().m2(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
+        // new Solution().m2(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
